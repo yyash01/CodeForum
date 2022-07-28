@@ -96,7 +96,7 @@ user will not be allowed to enter any sort of information before loging the syst
 
 ### Working Snippet of Project :
 
-[LINK TO SNIPPET](https://youtu.be/avdqq_EHqmk)
+[LINK TO SNIPPET]
 
 ---
 
