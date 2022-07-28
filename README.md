@@ -29,10 +29,39 @@ A Free HelpForum for Programmers and Developers
 
 ---
 
-| Type |            Route             | Path Parameters |              Description              |
-| :--: | :--------------------------: | :-------------: | :-----------------------------------: |
-| GET  | /questions/:userid/smoothies |     userId      | To get All The Questions in the Forum |
-| GET  | /questions/:userid/smoothies |     userId      | To get All The Questions in the Forum |
+| Type |                     Route                      |         Path Parameters         |                      Description                      |
+| :--: | :--------------------------------------------: | :-----------------------------: | :---------------------------------------------------: |
+| GET  |          /questions/:userid/smoothies          |             userId              |         To get All The Questions in the Forum         |
+| GET  |     /questions/:userid/UpdateQuestionList      |             userId              |      display a form for creating a new Question       |
+| GET  |             /questions/:userid/:id             |      userId ,id=questionId      |          shows more info about one Question           |
+| GET  |       /questions/:userid/:id/answer/new        |       userId ,id=answerid       | show text-editor when someone wants to post a Answer  |
+| GET  | /questions/:userid/:questionid/answer/show/:id | userId ,questionid, id=answerid |       show detail page for a pariticular answer       |
+| POST |     /questions/:userid/UpdateQuestionList      |             userId              |      to add the new Question in database/WebSite      |
+| POST |           /questions/:userid/delete            |             userId              |                 to delete a question                  |
+| POST |            /:userid/:id/answer/new             |       userId, id=answerId       | to add the new Answer for a question in the Database. |
+
+---
+
+### Answer
+
+---
+
+| Type |              Route              |    Path Parameters    |                  Description                   |
+| :--: | :-----------------------------: | :-------------------: | :--------------------------------------------: |
+| GET  |    /answer/:userid/show/:id     | userId, id=questionId |   show detail page for a pariticular answer    |
+| POST |     /answer/:userid/delete      |        userId         |        to delete a answer of a question        |
+| POST |     /answer/:userid/upvote      |        userId         |        to Upvote a answer of a question        |
+| POST | /answer/:userid/:id/comment/new |  userId,id=commentId  | to post a new comment for a particular answer. |
+
+---
+
+### Comment
+
+---
+
+| Type |          Route          | Path Parameters |          Description          |
+| :--: | :---------------------: | :-------------: | :---------------------------: |
+| GET  | /comment/:userid/delete |     userId      | To delete a Comment By a User |
 
 ## Tech Used
 
