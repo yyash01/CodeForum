@@ -1,0 +1,507 @@
+/* google fonts */
+/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+body {
+  font-family: "Rubik", sans-serif;
+  margin: 20px 40px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  background: #fafafa;
+}
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+a,
+p,
+input,
+label,
+button,
+div,
+footer {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  color: #444;
+}
+.btn {
+  cursor: pointer;
+}
+.g_id_signin {
+  position: absolute;
+  left: 22%;
+  top: 42%;
+  padding: 5px;
+}
+
+.g-signin2 .abcRioButton {
+  height: 230px;
+  width: 50px;
+}
+
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+/*Search Bar*/
+.wrapper {
+  max-width: 450px;
+  margin: 100px auto;
+}
+.wrapper .search-input {
+  background: #fff;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+.search-input input {
+  height: 55px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+.search-input.active input {
+  border-radius: 5px 5px 0 0;
+}
+.search-input .autocom-box {
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.search-input.active .autocom-box {
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.autocom-box li {
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+.search-input.active .autocom-box li {
+  display: block;
+}
+.autocom-box li:hover {
+  background: #b42828;
+}
+.search-input .icon {
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  height: 55px;
+  width: 55px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  color: #1d1d1f;
+  cursor: pointer;
+}
+/*-----Search Bar Ends--------*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 120px;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+}
+nav li {
+  margin-left: 20px;
+}
+nav li a {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
+.home {
+  background: #fee996;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8em;
+}
+.btn {
+  border-radius: 10px;
+  background: #fee996;
+}
+.button-two {
+  padding: 10px 40px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: rgb(98, 143, 241);
+  margin-top: 40px;
+}
+
+.btn-success {
+  border-radius: 10px;
+  background-color: rgb(48, 47, 47);
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+.btn-success-sec {
+  border-radius: 10px;
+  background-color: rgb(48, 47, 47);
+  margin-left: 50;
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 70%;
+  cursor: pointer;
+}
+.btn-success-op {
+  border-radius: 10px;
+  background-color: rgb(48, 47, 47);
+  margin-left: 50;
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 235px;
+  cursor: pointer;
+}
+.btn-success-comment {
+  border-radius: 10px;
+  background-color: gray;
+  margin-left: 50;
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 150px;
+  cursor: pointer;
+}
+.btn-success-solve {
+  border-radius: 10px;
+  background-color: rgb(48, 47, 47);
+  margin-bottom: auto;
+  font-size: 18px;
+  cursor: pointer;
+}
+.btn-success-solveQ {
+  border-radius: 10px;
+  background-color: rgb(148, 144, 144);
+  margin-bottom: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.textC {
+  color: #fff;
+}
+form h2 {
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+form {
+  width: 360px;
+  margin: 0 auto;
+  padding: 30px;
+}
+.Row {
+  display: table;
+  width: 100%; /*Optional*/
+  table-layout: fixed; /*Optional*/
+  border-spacing: 10px; /*Optional*/
+}
+.Column {
+  display: table-cell;
+}
+.Col {
+  display: inline-block;
+}
+.Column-b1 {
+  display: table-cell;
+  padding: 5px;
+}
+.Column-b2 {
+  display: table-cell;
+  padding: 5px;
+}
+.AskQuestion {
+  width: 450px;
+  margin: 0 auto;
+  padding: 30px;
+}
+input {
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+
+input::placeholder {
+  opacity: 0.5;
+  font-size: 20px;
+  font-style: italic;
+}
+label {
+  display: block;
+  margin: 20px 0 10px;
+}
+button {
+  margin-top: 30px;
+  border-radius: 10px;
+  border: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
+
+textarea {
+  width: 450px;
+  font-size: 0.8em;
+}
+.error {
+  color: rgb(168, 89, 36);
+  margin: 10px 2px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+header img {
+  width: 250px;
+  margin-right: 40px;
+}
+header h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+header h3 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  color: #999;
+}
+header .btn {
+  margin-top: 20px;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.8em;
+}
+.recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 80px;
+  margin: 80px AUTO;
+  max-width: 1200px;
+}
+.recipe {
+  display: inline-block;
+  border-radius: 20px;
+  background: white;
+  position: relative;
+  text-align: center;
+  padding: 0 20px 30px 20px;
+}
+.recipe img {
+  width: 100px;
+  margin: -30px auto 20px;
+}
+footer {
+  text-align: center;
+  margin-top: 120px;
+  color: #aaa;
+}
+
+.addQuestion {
+  align-content: center;
+  margin-left: 40px;
+}
+
+.AnwerForm {
+  align-content: center;
+  width: 800px;
+  margin: -50px auto;
+  margin-bottom: 20px;
+  padding: 30px;
+}
+
+.ql-snow .ql-picker.ql-font {
+  margin-top: 30px;
+  width: 108px;
+}
+
+.ql-snow .ql-picker.ql-size {
+  margin-top: 30px;
+  width: 98px;
+}
+
+.ql-toolbar.ql-snow {
+  margin-top: 30px;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  padding: 8px;
+}
+
+.ql-container.ql-snow {
+  overflow: visible;
+}
+
+.btn-success-third {
+  border-radius: 10px;
+  background-color: rgb(48, 47, 47);
+  margin-left: 110px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 70%;
+  cursor: pointer;
+}
+
+#editor-container {
+  height: 385px;
+  border: 2px solid grey;
+}
+
+#editor-answer {
+  margin-left: 300px;
+  height: 480px;
+  width: 910px;
+  border: 1px solid grey;
+}
+#editor-answer .ql-editor {
+  height: 460px;
+}
+
+.dd-box {
+  justify-content: space-between;
+  margin-top: 40px;
+  background: #fff;
+  box-shadow: 0 10px 30px -6px rgb(30 30 100 / 25%);
+  border-radius: 5px;
+  padding: 20px;
+  transition: all 0.25s;
+  width: 50%;
+}
+
+.comment-box {
+  display: inline-flex;
+}
+.Row .Column .comment-box .input {
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+
+.cc-box {
+  justify-content: space-between;
+  margin-top: 40px;
+  border-radius: 5px;
+  padding: 20px;
+  transition: all 0.25s;
+  width: 50%;
+  margin-left: 300px;
+}
+
+.recipes .recipe .simple {
+  display: inline-flex;
+}
+.recipes .recipe .simple button {
+  margin-top: 40px;
+  margin-left: 35px;
+  cursor: pointer;
+}
+.cc-box .Row .simple {
+  display: inline-flex;
+}
+.cc-box .Row .simple button {
+  margin-top: 0px;
+  margin-left: 60px;
+  cursor: pointer;
+}
+.comentForm {
+  width: 880px;
+  display: inline-flex;
+}
+.comentForm textarea {
+  height: 60px;
+}
+.Row .Column .comment-box .comentForm button {
+  margin-top: 0px;
+  margin-left: 250px;
+}
+
+.loader {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader.hidden {
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.profile-tab {
+  display: inline-flex;
+}
+
+.Col-profile {
+  display: inline-flex;
+}
+
+.Rowrapper {
+  margin-top: 30px;
+  max-width: 300px;
+  max-height: 150px;
+  overflow: auto;
+}
+
+.Rowrapper .op {
+  padding: 10px 20px;
+  display: inline-flex;
+
+  border-bottom: 1px solid #ccc;
+}
+
+.btop {
+  background-color: none;
+  margin-top: -5px;
+  margin-left: 5px;
+  padding-top: -1000px;
+}
+
+.dd-box .Row .pull-right {
+  float: right;
+}

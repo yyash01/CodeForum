@@ -1,0 +1,219 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeForum</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Include stylesheet for Quill and highlight.js-->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai-sublime.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.quilljs.com/1.3.6/quill.bubble.css"
+    />
+
+    <!-- Inlcude Scripts for Quill and highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6e18d74916.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="loader hidden">
+      <img src="/Rolling.gif" style="height: 50px; width: 50px" />
+    </div>
+    <nav>
+      <h3>
+        <ul>
+          <li>
+            <a href="/questions/<%= user %>/smoothies" class="btn"> Home </a>
+          </li>
+        </ul>
+      </h3>
+      <ul>
+        <% if (user) { %>
+        <li>
+          <a
+            href="/profile/<%= user %>"
+            style="background-color: rgb(212, 211, 211); border-radius: 15px"
+          >
+            <b><i class="fas fa-user-circle"></i>Profile</b>
+          </a>
+        </li>
+        <li>
+          <a class="btn" onclick="signOut('<%= user %>');">
+            LogOut
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+
+    <div class="answer" style="margin-top: -80px">
+      <div class="Row" style="margin-left: 300px">
+        <div class="Column"><h2><%= answer.topic %></h2></div>
+      </div>
+      <div class="Row" style="margin-left: 300px;">
+        <p style=" font-size: 25px; color: grey;display: inline-flex;">Author :<a href="<%= answer.author.link %>" target="_blank"> <%= answer.author.name %> </a>
+          <button onclick="doupVote('<%= answer._id %>');"
+           style="margin-left: 600px; margin-right: 20px; margin-top: 0px; cursor: pointer;">
+          <i class="fas fa-thumbs-up"></i>
+        </button>
+        <%= answer.votes%>
+      </p>
+      </div>
+      <div class="Row">
+        <div id="editor-answer">
+          <pre id="json"><%= answer.content %></pre>
+        </div>
+        <script>
+          // console.log(question._id);
+          var quill = new Quill("#editor-answer", {
+            modules: {
+              syntax: true,
+              clipboard: {
+                matchVisual: false,
+              },
+            },
+            placeholder: "Add Your Code Here...",
+            theme: "bubble",
+          });
+          var justTextContent = document.getElementById("justText");
+        </script>
+      </div>
+      <div class="Row" style="margin-left: 300px">
+        <div class="Column">
+          <div class="comment-box">
+            <form class="comentForm">
+              <textarea type="text" name="comment" required></textarea>
+              <button class="btn-success-comment">
+                <p class="textC">comment</p>
+              </button>
+            </form>
+            <script>
+              const form = document.querySelector("form");
+              form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                //spinner activated
+                const loader = document.querySelector(".loader");
+                loader.className = "loader"; // class "loader hidden"
+                //get comment
+                const topic = form.comment.value;
+                try {
+                  const res = await fetch(
+                    "/answer/<%= user %>/<%= answer._id %>/comment/new",
+                    {
+                      method: "POST",
+                      body: JSON.stringify({ topic }),
+                      headers: { "Content-Type": "application/json" },
+                    }
+                  );
+                  const data = await res.json();
+                  if (data.commentID) {
+                    location.assign("/answer/<%= user %>/show/<%= answer._id %>");
+                  }
+                } catch (err) {
+                  console.log(err);
+                }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <% if(answer.comments.length === 0){ %>
+      <div class="cc-box">
+        <div class="Row"><h3>No Comments Availaible </h3></div>
+      </div>
+      <%} else { answer.comments.forEach(function(comment){ %>
+      <div class="cc-box">
+        <div class="Row">
+          <p style="margin-bottom: 20px; font-size: 20px; color: grey;"><%= comment.author.name %></p>
+            <div class="simple">
+              <p><%= comment.topic %></p>
+              <% if(user && comment.author.id===user){ %>
+                <button type="button"onclick="doDelete('<%= comment._id %>');">
+                  <i class="fas fa-trash"></i>
+                </button>
+              <% } %>
+          </div>
+          </div>
+        </div>
+      </div>
+      <% })} %>
+    </div>
+    <script>
+      async function doupVote(answerID) {
+        //spinner activated
+        const loader = document.querySelector(".loader");
+        loader.className = "loader"; // class "loader hidden"
+        //delete logic
+
+        //for post request to server
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/answer/<%= user %>/upvote");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          const data = JSON.parse(xhr.responseText);
+          if(data.msg === "success"){
+            location.assign("/answer/<%= user %>/show/<%= answer._id %>");
+          }
+        };
+        xhr.send(JSON.stringify({ answerID }));
+      }
+    </script>
+    <script>
+      async function doDelete(commentID) {
+        //spinner activated
+        const loader = document.querySelector(".loader");
+        loader.className = "loader"; // class "loader hidden"
+        //delete logic
+
+        //for post request to server
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/comment/<%= user %>/delete");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          const data = JSON.parse(xhr.responseText);
+          if(data.msg === "success"){
+            location.assign("/answer/<%= user %>/show/<%= answer._id %>");
+          }
+        };
+        xhr.send(JSON.stringify({ commentID }));
+      }
+    </script>
+    <script>
+      function signOut(userId) {
+        console.log("Inside the function: " + userId);
+  
+        //for post request to server to signOut the current User.
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/logout");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          //console.log(JSON.parse(xhr.responseText));
+          location.assign("/");
+        };
+        xhr.send(JSON.stringify({ userId }));
+      }
+    </script>
+  </body>
+</html>

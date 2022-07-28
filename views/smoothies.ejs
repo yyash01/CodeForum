@@ -1,0 +1,54 @@
+<!-- Smoothies is for displaying all Questions -->
+<%- include('partials/header'); -%>
+<div class="loader hidden">
+  <img src="/Rolling.gif" style="height: 50px; width: 50px" />
+</div>
+<div class="wrapper">
+  <button type="button" class="btn-success">
+    <a href="/questions/<%= user %>/UpdateQuestionList" class="textC"
+      >Ask Question</a
+    >
+  </button>
+</div>
+<ul class="recipes">
+  <% question.forEach(function(q){ %>
+  <li class="recipe">
+    <img src="/logo4.png" alt="smoothie recipe icon" />
+    <h4><%= q.title %></h4>
+    <div class="simple">
+      <a
+        href="/questions/<%= user %>/<%= q._id %>"
+        class="button-two"
+        style="color: white"
+      >
+        <b>More-Info</b>
+      </a>
+      <%if(user && q.author.id === user){%>
+      <button type="button" onclick="doDelete('<%= q._id %>');">
+        <i class="fas fa-trash"></i>
+      </button>
+      <%}%>
+    </div>
+  </li>
+  <% }); %>
+</ul>
+<script>
+  async function doDelete(questionID) {
+    const loader = document.querySelector(".loader");
+    loader.className = "loader"; // class "loader hidden"
+
+    //for post request to server
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:3000/questions/<%= user %>/delete");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onload = function () {
+      const data = JSON.parse(xhr.responseText);
+      if (data.msg === "success") {
+        location.assign(`/questions/<%= user %>/smoothies`);
+      }
+    };
+    xhr.send(JSON.stringify({ questionID }));
+  }
+</script>
+<%- include('partials/footer'); -%>

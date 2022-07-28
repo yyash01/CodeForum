@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+
+<div class="loader hidden">
+  <img src="Rolling.gif" style="height: 50px; width: 50px" />
+</div>
+<div
+  id="g_id_onload"
+  data-client_id="922297526978-3g5fm0t5jialei5d8cpqs9c7pg6826ad.apps.googleusercontent.com"
+  data-context="signin"
+  data-ux_mode="popup"
+  data-auto_prompt="false"
+  data-callback="onSignIn"
+></div>
+
+<div
+  class="g_id_signin"
+  data-type="standard"
+  data-shape="rectangular"
+  data-text="signin_with"
+  data-size="large"
+  data-logo_alignment="left"
+  data-width="250px"
+  data-height="400px"
+></div>
+
+<script>
+  function onSignIn(googleUser) {
+    const responsePayload = googleUser.credential;
+    var base64Url = responsePayload.split(".")[1];
+    var decodedValue = JSON.parse(window.atob(base64Url));
+
+    console.log("ID: " + decodedValue.sub);
+    console.log("Full Name: " + decodedValue.name);
+    console.log("Given Name: " + decodedValue.given_name);
+    console.log("Family Name: " + decodedValue.family_name);
+    console.log("Image URL: " + decodedValue.picture);
+    console.log("Email: " + decodedValue.email);
+  }
+</script>

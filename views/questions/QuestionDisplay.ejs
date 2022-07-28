@@ -1,0 +1,71 @@
+<%- include('../partials/header'); -%>
+<div class="loader hidden">
+  <img src="/Rolling.gif" style="height: 50px; width: 50px" />
+</div>
+    <div className="questionDisplay">
+      <div class="card1">
+        <div class="Row">
+          <div class="Col">
+            <h3><%= question.title %></h3>
+            <p><%= question.query%></p>
+          </div>
+        </div>
+        <div class="Row">
+          <div class="Col">
+            <button type="button" class="btn-success-solve">
+              <a href="<%= question.link %>" class="textC" target="_blank">
+                Solve Question<i style="margin-left: 10px;" class="fas fa-external-link-alt"></i>
+              </a>
+            </button>
+            </div>
+            <div class="Col" style="margin-left: 30px">
+            <button type="button" class="btn-success-solveQ">
+              <a href="/questions/<%= user %>/<%= question._id %>/answer/new" class="textC">
+                Post Solution<i style="margin-left: 10px;" class="fas fa-plus"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if(question.answers.length === 0){ %>
+      <div class="dd-box">
+        <div class="Row"><h3>Sorry No Answer Availaible  😔</h3></div>
+      </div>
+    <%} else { question.answers.sort((a,b) => b.votes-a.votes); question.answers.forEach(function(answer){ %>
+        <div class="dd-box">
+                <div class="Row">
+                    <strong><%= answer.topic %></strong>
+                    <span class="pull-right"> Votes : <%= answer.votes %>
+                      <button type="button" class="btn-success-solveQ">
+                        <a class="textC" href="/answer/<%= user %>/show/<%=answer._id %>">View</a>
+                      </button>
+                    </span>
+                      <% if(user && answer.author.id===user){ %>
+                        <button type="button" style="cursor:pointer;"onclick="doDelete('<%= answer._id %>');"><i class="fas fa-trash"></i></button>
+                      <% } %>
+                </div>
+        </div>
+    <% })} %>
+    <script>
+      async function doDelete(answerID) {
+        const loader = document.querySelector(".loader");
+        loader.className = "loader"; // class "loader hidden"
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/answer/<%= user %>/delete");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          const data = JSON.parse(xhr.responseText);
+          if(data.msg=== "success"){
+            location.assign("/questions/<%= user %>/<%= question._id %>");
+          }
+        };
+        xhr.send(JSON.stringify({ answerID }));
+      }
+    </script>
+  </body>
+</html>
+
+
+

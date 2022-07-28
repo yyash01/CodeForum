@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeForum</title>
+    <link rel="icon" type="image/png" href="/img/lap.png" sizes="16x16" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/6e18d74916.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <nav>
+      <h3>
+        <ul>
+          <li>
+            <a href="/questions/<%= user %>/smoothies" class="btn"> Home </a>
+          </li>
+        </ul>
+      </h3>
+      <ul>
+        <% if (user) { %>
+        <li>
+          <a
+            href="/profile/<%= user %>"
+            style="background-color: rgb(212, 211, 211); border-radius: 15px"
+          >
+            <b><i class="fas fa-user-circle"></i>Profile</b>
+          </a>
+        </li>
+        <li>
+          <a class="btn" onclick="signOut('<%= user %>');">
+            LogOut
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+  </body>
+  <script>
+    function signOut(userId) {
+      console.log("Inside the function: " + userId);
+
+      //for post request to server to signOut the current User.
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "http://localhost:3000/logout");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function () {
+        //console.log(JSON.parse(xhr.responseText));
+        location.assign("/");
+      };
+      xhr.send(JSON.stringify({ userId }));
+    }
+  </script>
+</html>
