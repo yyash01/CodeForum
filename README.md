@@ -6,10 +6,10 @@ A Free HelpForum for Programmers and Developers
 
 ### Authentication
 
-| Type | Route  |     Path Parameters      |             Description              |
-| :--: | :----: | :----------------------: | :----------------------------------: |
-| POST | /login | body :- req.body.googlId | Get all the entries in student table |
-| POST | /logut |  body:- req.body.userId  |        Register a new student        |
+| Type | Route  |     Path Parameters      |    Description     |
+| :--: | :----: | :----------------------: | :----------------: |
+| POST | /login | body :- req.body.googlId | loging in the User |
+| POST | /logut |  body:- req.body.userId  |  logout the User   |
 
 ---
 
