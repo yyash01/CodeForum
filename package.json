@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/yyash01/CodeForum#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.2.0",
     "cookie-parser": "^1.4.5",
@@ -27,10 +26,8 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "highlight.js": "^11.2.0",
-    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "mongoose": "^5.13.5",
-    "validator": "^13.7.0"
+    "mongoose": "^5.13.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

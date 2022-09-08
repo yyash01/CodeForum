@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
 const CurrentUser = require("../models/CurrentUser");
 
 // check current user is loggedIn for every get/post request.
