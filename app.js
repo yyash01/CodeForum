@@ -8,6 +8,7 @@ const profileRoutes = require("./routes/profileRoutes");
 const questionRoutes = require("./routes/questionsRoutes");
 const answerRoutes = require("./routes/answersRoutes");
 const commentRoutes = require("./routes/commentRoutes");
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -31,11 +32,7 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then((result) =>
-    app.listen(3000, function () {
-      console.log("Server is running on Port 3000");
-    })
-  )
+  .then((result) => app.listen(PORT, console.log(`Listening on port ${PORT}.`)))
   .catch((err) => console.log(err));
 
 // routes
