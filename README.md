@@ -2,6 +2,30 @@
 
 A Free HelpForum for Programmers and Developers
 
+## Moto Of Creating this Project 
+```
+So it all started in covid times
+Me and my friends were discussing about a coding problems 
+No one of us was able to solve a problem or we were having difficulty in understanding the problem . 
+so there was a need of someone who had solved that problem can help us .
+But there was no such platform where we can post the question and get help.
+
+So there I created this  HelpForum WebApplication 
+where different user can post their queries regarding coding Problems and get clear their doubts
+```
+## Main Features :
+```
+1. simple login and logout using google authentication
+2. users can post the ( topic ,link and query regarding the question)
+   users of the platform can answer to other user doubts by writing there
+   solution in the editor attached.
+3. editor provide the functionality of :
+   adding code snippets
+   adding header and link to a video solution etc.
+4. And the other main feature the user can upvote a answer if they like it
+5. We can also comment on the answers that were posted by other user.
+```
+
 ## API - Endpoints
 
 ### Authentication
