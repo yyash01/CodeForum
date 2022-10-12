@@ -6,7 +6,8 @@ A Free HelpForum for Programmers and Developers
 ```
 So it all started in covid times
 Me and my friends were discussing about a coding problems 
-No one of us was able to solve a problem or we were having difficulty in understanding the problem . 
+No one of us was able to solve a problem or we were having difficulty in 
+understanding the problem . 
 so there was a need of someone who had solved that problem can help us .
 But there was no such platform where we can post the question and get help.
 
